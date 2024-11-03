@@ -39,6 +39,7 @@
             color: white;
             text-align: center;
             z-index: 2;
+            padding: 0 20px;
         }
         .cta-button {
             padding: 10px 20px;
@@ -90,6 +91,16 @@
         .social-links a {
             margin: 0 10px;
         }
+
+        /* Media Queries */
+        @media (max-width: 768px) {
+            .intro-text h1 {
+                font-size: 1.8em; /* Riduci la dimensione del font per schermi più piccoli */
+            }
+            .cta-button {
+                width: 100%; /* Pulsante a larghezza piena */
+            }
+        }
     </style>
 </head>
 <body>
@@ -110,8 +121,8 @@
     <!-- Hero Section -->
     <section id="home" class="hero">
         <div class="slideshow-container">
-            <div class="mySlides fade"><img src="assets/images/hero1.jpg" alt="Hero Image 1"></div>
-            <div class="mySlides fade"><img src="assets/images/hero2.jpg" alt="Hero Image 2"></div>
+            <div class="mySlides fade"><img src="assets/images/hero1.jpg" alt="Panorama di Sassari 1"></div>
+            <div class="mySlides fade"><img src="assets/images/hero2.jpg" alt="Panorama di Sassari 2"></div>
             <a class="prev" onclick="plusSlides(-1)">&#10094;</a>
             <a class="next" onclick="plusSlides(1)">&#10095;</a>
         </div>
@@ -124,7 +135,7 @@
 
     <!-- Sezione Mappa -->
     <div class="map-container">
-        <iframe src="https://www.google.com/maps/d/u/0/embed?mid=1eh0RFxxYtfba0BcJgKoBP3WgHkoRRSc&ehbc=2E312F" width="100%" height="500"></iframe>
+        <iframe src="https://www.google.com/maps/d/u/0/embed?mid=1eh0RFxxYtfba0BcJgKoBP3WgHkoRRSc&ehbc=2E312F"></iframe>
     </div>
 
     <p style="text-align: center; margin: 20px 0;">Utilizza la barra di ricerca nella mappa per trovare punti di interesse specifici. Puoi anche attivare o disattivare i filtri sui layer per visualizzare diversi tipi di luoghi.</p>
@@ -142,4 +153,5 @@
     <script src="assets/js/main.js"></script>
 </body>
 </html>
+
 
