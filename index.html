@@ -103,9 +103,6 @@
             nav {
                 display: none; /* Nasconde il menu normale */
             }
-            .nav-links {
-                display: flex; /* Mostra il menu in modalità mobile */
-            }
             .nav-links.show {
                 display: flex; /* Mostra il menu quando è attivo */
             }
@@ -160,12 +157,12 @@
             <a href="#contatti" class="nav-link">Contatti</a>
         </nav>
         <div class="nav-links" id="nav-links">
-            <a href="#home" class="nav-link">Home</a>
-            <a href="quartieri.html" class="nav-link">Quartieri</a>
-            <a href="servizi-comunali.html" class="nav-link">Servizi Comunali</a>
-            <a href="#volontariato" class="nav-link">Volontariato</a>
-            <a href="#eventi" class="nav-link">Eventi e Cultura</a>
-            <a href="#contatti" class="nav-link">Contatti</a>
+            <a href="#home" class="nav-link" onclick="closeMenu()">Home</a>
+            <a href="quartieri.html" class="nav-link" onclick="closeMenu()">Quartieri</a>
+            <a href="servizi-comunali.html" class="nav-link" onclick="closeMenu()">Servizi Comunali</a>
+            <a href="#volontariato" class="nav-link" onclick="closeMenu()">Volontariato</a>
+            <a href="#eventi" class="nav-link" onclick="closeMenu()">Eventi e Cultura</a>
+            <a href="#contatti" class="nav-link" onclick="closeMenu()">Contatti</a>
         </div>
     </header>
 
@@ -210,9 +207,15 @@
             const navLinks = document.getElementById("nav-links");
             navLinks.classList.toggle("show"); // Toggles the visibility of the nav links
         }
+        
+        function closeMenu() {
+            const navLinks = document.getElementById("nav-links");
+            navLinks.classList.remove("show"); // Chiude il menu quando si seleziona un link
+        }
     </script>
 </body>
 </html>
+
 
 
 
