@@ -8,24 +8,18 @@
     <style>
         /* Stile per la mappa */
         .map-container {
-            display: flex;                /* Utilizza flexbox per allineare le immagini */
-            justify-content: center;      /* Centra le immagini orizzontalmente */
-            flex-wrap: wrap;              /* Permette il wrapping delle immagini */
+            display: flex; /* Utilizza flexbox per allineare le immagini */
+            justify-content: center; /* Centra le immagini orizzontalmente */
+            flex-wrap: wrap; /* Permette il wrapping delle immagini */
             padding: 20px;
-            gap: 10px;                    /* Spaziatura uniforme tra le immagini */
         }
         .map-img {
-            width: 150px;                 /* Dimensione fissa per uniformità */
-            height: 150px;
-            object-fit: cover;            /* Adatta l'immagine al contenitore mantenendo il rapporto */
-            border-radius: 10px;          /* Angoli arrotondati per le immagini */
+            width: 30%; /* Imposta la larghezza delle immagini */
+            height: auto; /* Mantiene il rapporto di aspetto */
+            margin: 10px; /* Margine tra le immagini */
+            border-radius: 10px; /* Angoli arrotondati per le immagini */
             box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Ombra per un aspetto professionale */
-            transition: transform 0.3s ease; /* Transizione per l'effetto hover */
         }
-        .map-img:hover {
-            transform: scale(1.1);        /* Effetto di ingrandimento al passaggio del mouse */
-        }
-
         /* Stili generali */
         header {
             display: flex;
@@ -43,37 +37,89 @@
         nav a:hover {
             text-decoration: underline;
         }
-
-        /* Layout griglia per i quartieri */
         .quartieri-grid {
             display: flex;
-            flex-direction: column;  /* Mostra i quartieri in colonna */
+            flex-direction: column; /* Mostra i quartieri in colonna */
             padding: 20px;
         }
         .quartiere-card {
-            display: flex;
-            flex-direction: column;
-            align-items: center;
             margin: 10px 0;
             border: 1px solid #ccc;
-            padding: 15px;
+            padding: 10px;
             border-radius: 5px;
-            text-align: center;
         }
-        .quartiere-card img {
+
+        /* Navbar */
+        header {
+            position: fixed;
+            top: 0;
             width: 100%;
-            max-width: 300px;      /* Limita la dimensione massima delle immagini nei quartieri */
-            border-radius: 5px;
-            margin-bottom: 10px;
-            object-fit: cover;
-            height: auto;
+            background: rgba(51, 51, 51, 0.8);
+            color: #fff;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 10px 20px;
+            z-index: 1000;
         }
+        .menu-icon {
+            display: none; /* Nasconde l'icona del menu di default */
+            cursor: pointer;
+        }
+        .nav-links {
+            display: none; /* Nasconde il menu in modalità mobile */
+            flex-direction: column; /* Imposta le voci del menu in verticale */
+            position: absolute;
+            top: 60px; /* Posizionamento sotto la navbar */
+            right: 0;
+            background: rgba(51, 51, 51, 0.9);
+            width: 100%; /* Larghezza piena */
+            padding: 10px 20px;
+        }
+        .nav-links.show {
+            display: flex; /* Mostra il menu quando è attivo */
+        }
+
+        /* Footer */
         footer {
             background: #333;
             color: white;
             text-align: center;
             padding: 20px;
             width: 100%;
+        }
+        .social-links {
+            margin-top: 10px;
+        }
+        .social-links a {
+            margin: 0 10px;
+        }
+
+        /* Aggiungere margine superiore per il contenuto */
+        .content {
+            margin-top: 80px; /* Regola l'altezza in base alla navbar */
+        }
+
+        /* Media Queries */
+        @media (max-width: 768px) {
+            .map-img {
+                width: 80%; /* Larghezza delle immagini su schermi piccoli */
+            }
+            .menu-icon {
+                display: block; /* Mostra l'icona del menu su schermi piccoli */
+            }
+            nav {
+                display: none; /* Nasconde il menu normale */
+            }
+            .quartieri-grid {
+                padding: 10px; /* Riduce il padding per schermi piccoli */
+            }
+            .intro-text h1 {
+                font-size: 1.8em; /* Riduci la dimensione del font per schermi più piccoli */
+            }
+            .cta-button {
+                width: 100%; /* Pulsante a larghezza piena */
+            }
         }
     </style>
 </head>
@@ -82,6 +128,9 @@
     <!-- Navbar -->
     <header>
         <div class="logo">Logo Sassari</div>
+        <div class="menu-icon" onclick="toggleMenu()">
+            &#9776; <!-- Icona del menu hamburger -->
+        </div>
         <nav>
             <a href="index.html" class="nav-link">Home</a>
             <a href="#quartieri" class="nav-link">Quartieri</a>
@@ -90,6 +139,14 @@
             <a href="#eventi" class="nav-link">Eventi e Cultura</a>
             <a href="#contatti" class="nav-link">Contatti</a>
         </nav>
+        <div class="nav-links" id="nav-links">
+            <a href="index.html" class="nav-link" onclick="closeMenu()">Home</a>
+            <a href="#quartieri" class="nav-link" onclick="closeMenu()">Quartieri</a>
+            <a href="servizi-comunali.html" class="nav-link" onclick="closeMenu()">Servizi Comunali</a>
+            <a href="#volontariato" class="nav-link" onclick="closeMenu()">Volontariato</a>
+            <a href="#eventi" class="nav-link" onclick="closeMenu()">Eventi e Cultura</a>
+            <a href="#contatti" class="nav-link" onclick="closeMenu()">Contatti</a>
+        </div>
     </header>
 
     <!-- Main content wrapper -->
@@ -98,31 +155,28 @@
         <section id="quartieri" class="section">
             <h2>Quartieri di Sassari</h2>
             <div class="quartieri-grid">
-                <!-- Sezione mappe -->
                 <section id="mappe" class="section">
-                    <h3>Le Mappe</h3>
+                    <h3>I Quartieri della Citta' di Sassari</h3>
                     <div class="map-container">
-                        <img src="assets/images/duo.jpg" alt="Mappa del Centro Storico di Sassari" class="map-img">
-                        <img src="assets/images/fronte.jpg" alt="Mappa Cuore" class="map-img">
-                        <img src="assets/images/duomo.jpg" alt="Mappa Piazza" class="map-img">
+                        <img src="assets/images/sssari.png" alt="Mappa del Centro Storico di Sassari" class="map-img">
+                        <img src="assets/images/cuoe.png" alt="Mappa Cuoe" class="map-img">
+                        <img src="assets/images/pia.png" alt="Mappa Piazza" class="map-img">
                     </div>
                 </section>
 
-                <!-- Dettagli quartieri -->
                 <div class="quartiere-card">
                     <h3>Centro Storico</h3>
                     <p>Il centro storico di Sassari rappresenta il cuore della città, sviluppato in maniera geometrica per adattarsi alle caratteristiche del territorio e alla storia.</p>
                     <a href="centrostorico.html">Scopri di più</a>
                 </div>
                 <div class="quartiere-card">
-                    <img src="assets/images/quartiere1.jpg" alt="Quartiere Monte Rosello">
                     <h3>Monte Rosello</h3>
                     <p>Monte Rosello è un quartiere ben conosciuto per i suoi servizi e la vivace comunità.</p>
                     <a href="monte.html">Scopri di più</a>
                 </div>
                 <div class="quartiere-card">
                     <h3>Sacro Cuore</h3>
-                    <p>Il Sacro Cuore è famoso per le sue aree verdi e il calore della comunità locale.</p>
+                    <p>Sacro Cuore è famoso per le sue aree verdi e il calore della comunità locale.</p>
                     <a href="pisa.html">Scopri di più</a>
                 </div>
                 <div class="quartiere-card">
@@ -149,5 +203,18 @@
         <p>&copy; 2023 Comune di Sassari. Tutti i diritti riservati.</p>
     </footer>
 
+    <script src="assets/js/main.js"></script>
+    <script>
+        function toggleMenu() {
+            const navLinks = document.getElementById("nav-links");
+            navLinks.classList.toggle("show"); // Toggles the visibility of the nav links
+        }
+        
+        function closeMenu() {
+            const navLinks = document.getElementById("nav-links");
+            navLinks.classList.remove("show"); // Chiude il menu quando si seleziona un link
+        }
+    </script>
 </body>
 </html>
+
