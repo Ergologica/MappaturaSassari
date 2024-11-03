@@ -39,7 +39,6 @@
             color: white;
             text-align: center;
             z-index: 2;
-            padding: 0 20px;
         }
         .cta-button {
             padding: 10px 20px;
@@ -92,6 +91,11 @@
             margin: 0 10px;
         }
 
+        /* Aggiungere margine superiore per il contenuto */
+        .content {
+            margin-top: 80px; /* Regola l'altezza in base alla navbar */
+        }
+
         /* Media Queries */
         @media (max-width: 768px) {
             .intro-text h1 {
@@ -133,12 +137,15 @@
         </div>
     </section>
 
-    <!-- Sezione Mappa -->
-    <div class="map-container">
-        <iframe src="https://www.google.com/maps/d/u/0/embed?mid=1eh0RFxxYtfba0BcJgKoBP3WgHkoRRSc&ehbc=2E312F"></iframe>
-    </div>
+    <!-- Contenitore per il contenuto -->
+    <div class="content">
+        <!-- Sezione Mappa -->
+        <div class="map-container">
+            <iframe src="https://www.google.com/maps/d/u/0/embed?mid=1eh0RFxxYtfba0BcJgKoBP3WgHkoRRSc&ehbc=2E312F"></iframe>
+        </div>
 
-    <p style="text-align: center; margin: 20px 0;">Utilizza la barra di ricerca nella mappa per trovare punti di interesse specifici. Puoi anche attivare o disattivare i filtri sui layer per visualizzare diversi tipi di luoghi.</p>
+        <p style="text-align: center; margin: 20px 0;">Utilizza la barra di ricerca nella mappa per trovare punti di interesse specifici. Puoi anche attivare o disattivare i filtri sui layer per visualizzare diversi tipi di luoghi.</p>
+    </div>
 
     <!-- Footer -->
     <footer>
@@ -146,12 +153,13 @@
         <div class="social-links">
             <a href="#"><img src="assets/images/facebook-icon.png" alt="Facebook"></a>
             <a href="#"><img src="assets/images/instagram-icon.png" alt="Instagram"></a>
-            <a href="#"><img src="assets/images/twitter-icon.png" alt="Twitter"></a>
+            <a href="#"><img src="#"><img src="assets/images/twitter-icon.png" alt="Twitter"></a>
         </div>
     </footer>
 
     <script src="assets/js/main.js"></script>
 </body>
 </html>
+
 
 
