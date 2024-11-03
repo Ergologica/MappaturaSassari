@@ -65,6 +65,13 @@
             padding: 10px 20px;
             z-index: 1000;
         }
+        .menu-icon {
+            display: none; /* Nasconde l'icona del menu di default */
+            cursor: pointer;
+        }
+        nav {
+            display: flex;
+        }
         nav a {
             color: #fff;
             margin-left: 20px;
@@ -73,6 +80,35 @@
         }
         nav a:hover {
             color: #007BFF;
+        }
+        /* Stile per il menu hamburger */
+        .nav-links {
+            display: none; /* Nasconde il menu in modalità mobile */
+            flex-direction: column; /* Imposta le voci del menu in verticale */
+            position: absolute;
+            top: 60px; /* Posizionamento sotto la navbar */
+            right: 0;
+            background: rgba(51, 51, 51, 0.9);
+            width: 100%; /* Larghezza piena */
+            padding: 10px 20px;
+        }
+        .nav-links a {
+            margin: 10px 0; /* Spazio verticale tra le voci */
+        }
+        /* Mostra il menu hamburger su schermi piccoli */
+        @media (max-width: 768px) {
+            .menu-icon {
+                display: block; /* Mostra l'icona del menu su schermi piccoli */
+            }
+            nav {
+                display: none; /* Nasconde il menu normale */
+            }
+            .nav-links {
+                display: flex; /* Mostra il menu in modalità mobile */
+            }
+            .nav-links.show {
+                display: flex; /* Mostra il menu quando è attivo */
+            }
         }
         /* Footer */
         footer {
@@ -112,6 +148,9 @@
     <!-- Navbar fissa -->
     <header>
         <div class="logo">Mappatura Educativa di Strada di Sassari</div>
+        <div class="menu-icon" onclick="toggleMenu()">
+            &#9776; <!-- Icona del menu hamburger -->
+        </div>
         <nav>
             <a href="#home" class="nav-link">Home</a>
             <a href="quartieri.html" class="nav-link">Quartieri</a>
@@ -120,6 +159,14 @@
             <a href="#eventi" class="nav-link">Eventi e Cultura</a>
             <a href="#contatti" class="nav-link">Contatti</a>
         </nav>
+        <div class="nav-links" id="nav-links">
+            <a href="#home" class="nav-link">Home</a>
+            <a href="quartieri.html" class="nav-link">Quartieri</a>
+            <a href="servizi-comunali.html" class="nav-link">Servizi Comunali</a>
+            <a href="#volontariato" class="nav-link">Volontariato</a>
+            <a href="#eventi" class="nav-link">Eventi e Cultura</a>
+            <a href="#contatti" class="nav-link">Contatti</a>
+        </div>
     </header>
 
     <!-- Hero Section -->
@@ -153,13 +200,20 @@
         <div class="social-links">
             <a href="#"><img src="assets/images/facebook-icon.png" alt="Facebook"></a>
             <a href="#"><img src="assets/images/instagram-icon.png" alt="Instagram"></a>
-            <a href="#"><img src="#"><img src="assets/images/twitter-icon.png" alt="Twitter"></a>
+            <a href="#"><img src="assets/images/twitter-icon.png" alt="Twitter"></a>
         </div>
     </footer>
 
     <script src="assets/js/main.js"></script>
+    <script>
+        function toggleMenu() {
+            const navLinks = document.getElementById("nav-links");
+            navLinks.classList.toggle("show"); // Toggles the visibility of the nav links
+        }
+    </script>
 </body>
 </html>
+
 
 
 
