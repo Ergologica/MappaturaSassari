@@ -8,48 +8,20 @@
     <style>
         /* Stile per la mappa */
         .map-container {
-            display: flex; /* Utilizza flexbox per allineare le immagini */
-            justify-content: center; /* Centra le immagini orizzontalmente */
-            flex-wrap: wrap; /* Permette il wrapping delle immagini */
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
             padding: 20px;
         }
         .map-img {
-            width: 30%; /* Imposta la larghezza delle immagini */
-            height: auto; /* Mantiene il rapporto di aspetto */
-            margin: 10px; /* Margine tra le immagini */
-            border-radius: 10px; /* Angoli arrotondati per le immagini */
-            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Ombra per un aspetto professionale */
+            width: 30%;
+            height: auto;
+            margin: 10px;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
         }
+        
         /* Stili generali */
-        header {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            padding: 10px 20px;
-            background: #333;
-            color: white;
-        }
-        nav a {
-            color: #fff;
-            margin-left: 20px;
-            text-decoration: none;
-        }
-        nav a:hover {
-            text-decoration: underline;
-        }
-        .quartieri-grid {
-            display: flex;
-            flex-direction: column; /* Mostra i quartieri in colonna */
-            padding: 20px;
-        }
-        .quartiere-card {
-            margin: 10px 0;
-            border: 1px solid #ccc;
-            padding: 10px;
-            border-radius: 5px;
-        }
-
-        /* Navbar */
         header {
             position: fixed;
             top: 0;
@@ -62,22 +34,44 @@
             padding: 10px 20px;
             z-index: 1000;
         }
+        nav a {
+            color: #fff;
+            margin-left: 20px;
+            text-decoration: none;
+        }
+        nav a:hover {
+            text-decoration: underline;
+        }
+        .quartieri-grid {
+            display: flex;
+            flex-direction: column;
+            padding: 20px;
+            margin-top: 80px; /* Margine per compensare la navbar fissa */
+        }
+        .quartiere-card {
+            margin: 10px 0;
+            border: 1px solid #ccc;
+            padding: 10px;
+            border-radius: 5px;
+        }
+
+        /* Navbar mobile */
         .menu-icon {
-            display: none; /* Nasconde l'icona del menu di default */
+            display: none;
             cursor: pointer;
         }
         .nav-links {
-            display: none; /* Nasconde il menu in modalità mobile */
-            flex-direction: column; /* Imposta le voci del menu in verticale */
+            display: none;
+            flex-direction: column;
             position: absolute;
-            top: 60px; /* Posizionamento sotto la navbar */
+            top: 60px;
             right: 0;
             background: rgba(51, 51, 51, 0.9);
-            width: 100%; /* Larghezza piena */
+            width: 100%;
             padding: 10px 20px;
         }
         .nav-links.show {
-            display: flex; /* Mostra il menu quando è attivo */
+            display: flex;
         }
 
         /* Footer */
@@ -95,30 +89,19 @@
             margin: 0 10px;
         }
 
-        /* Aggiungere margine superiore per il contenuto */
-        .content {
-            margin-top: 80px; /* Regola l'altezza in base alla navbar */
-        }
-
         /* Media Queries */
         @media (max-width: 768px) {
             .map-img {
-                width: 80%; /* Larghezza delle immagini su schermi piccoli */
+                width: 80%;
             }
             .menu-icon {
-                display: block; /* Mostra l'icona del menu su schermi piccoli */
+                display: block;
             }
             nav {
-                display: none; /* Nasconde il menu normale */
+                display: none;
             }
             .quartieri-grid {
-                padding: 10px; /* Riduce il padding per schermi piccoli */
-            }
-            .intro-text h1 {
-                font-size: 1.8em; /* Riduci la dimensione del font per schermi più piccoli */
-            }
-            .cta-button {
-                width: 100%; /* Pulsante a larghezza piena */
+                padding: 10px;
             }
         }
     </style>
@@ -159,7 +142,7 @@
                     <h3>Mappatura</h3>
                     <div class="map-container">
                         <img src="assets/images/duomo.png" alt="Mappa del Centro Storico di Sassari" class="map-img">
-                        <img src="assets/images/duo.png" alt="Mappa Cuoe" class="map-img">
+                        <img src="assets/images/duo.png" alt="Mappa Cuore" class="map-img">
                         <img src="assets/images/fronte.png" alt="Mappa Piazza" class="map-img">
                     </div>
                 </section>
@@ -207,14 +190,15 @@
     <script>
         function toggleMenu() {
             const navLinks = document.getElementById("nav-links");
-            navLinks.classList.toggle("show"); // Toggles the visibility of the nav links
+            navLinks.classList.toggle("show");
         }
         
         function closeMenu() {
             const navLinks = document.getElementById("nav-links");
-            navLinks.classList.remove("show"); // Chiude il menu quando si seleziona un link
+            navLinks.classList.remove("show");
         }
     </script>
 </body>
 </html>
+
 
