@@ -8,18 +8,24 @@
     <style>
         /* Stile per la mappa */
         .map-container {
-            display: flex; /* Utilizza flexbox per allineare le immagini */
-            justify-content: center; /* Centra le immagini orizzontalmente */
-            flex-wrap: wrap; /* Permette il wrapping delle immagini */
+            display: flex;                /* Utilizza flexbox per allineare le immagini */
+            justify-content: center;      /* Centra le immagini orizzontalmente */
+            flex-wrap: wrap;              /* Permette il wrapping delle immagini */
             padding: 20px;
+            gap: 10px;                    /* Spaziatura uniforme tra le immagini */
         }
         .map-img {
-            width: 30%; /* Imposta la larghezza delle immagini */
-            height: auto; /* Mantiene il rapporto di aspetto */
-            margin: 10px; /* Margine tra le immagini */
-            border-radius: 10px; /* Angoli arrotondati per le immagini */
+            width: 150px;                 /* Dimensione fissa per uniformità */
+            height: 150px;
+            object-fit: cover;            /* Adatta l'immagine al contenitore mantenendo il rapporto */
+            border-radius: 10px;          /* Angoli arrotondati per le immagini */
             box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Ombra per un aspetto professionale */
+            transition: transform 0.3s ease; /* Transizione per l'effetto hover */
         }
+        .map-img:hover {
+            transform: scale(1.1);        /* Effetto di ingrandimento al passaggio del mouse */
+        }
+
         /* Stili generali */
         header {
             display: flex;
@@ -37,16 +43,30 @@
         nav a:hover {
             text-decoration: underline;
         }
+
+        /* Layout griglia per i quartieri */
         .quartieri-grid {
             display: flex;
-            flex-direction: column; /* Mostra i quartieri in colonna */
+            flex-direction: column;  /* Mostra i quartieri in colonna */
             padding: 20px;
         }
         .quartiere-card {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
             margin: 10px 0;
             border: 1px solid #ccc;
-            padding: 10px;
+            padding: 15px;
             border-radius: 5px;
+            text-align: center;
+        }
+        .quartiere-card img {
+            width: 100%;
+            max-width: 300px;      /* Limita la dimensione massima delle immagini nei quartieri */
+            border-radius: 5px;
+            margin-bottom: 10px;
+            object-fit: cover;
+            height: auto;
         }
         footer {
             background: #333;
@@ -78,22 +98,24 @@
         <section id="quartieri" class="section">
             <h2>Quartieri di Sassari</h2>
             <div class="quartieri-grid">
+                <!-- Sezione mappe -->
                 <section id="mappe" class="section">
                     <h3>Le Mappe</h3>
                     <div class="map-container">
-                        <img src="assets/images/sssari.png" alt="Mappa del Centro Storico di Sassari" class="map-img">
-                        <img src="assets/images/cuoe.png" alt="Mappa Cuoe" class="map-img">
-                        <img src="assets/images/pia.png" alt="Mappa Piazza" class="map-img">
+                        <img src="assets/images/duo.jpg" alt="Mappa del Centro Storico di Sassari" class="map-img">
+                        <img src="assets/images/fronte.jpg" alt="Mappa Cuore" class="map-img">
+                        <img src="assets/images/duomo.jpg" alt="Mappa Piazza" class="map-img">
                     </div>
                 </section>
 
+                <!-- Dettagli quartieri -->
                 <div class="quartiere-card">
                     <h3>Centro Storico</h3>
                     <p>Il centro storico di Sassari rappresenta il cuore della città, sviluppato in maniera geometrica per adattarsi alle caratteristiche del territorio e alla storia.</p>
                     <a href="centrostorico.html">Scopri di più</a>
                 </div>
                 <div class="quartiere-card">
-                    <img src="assets/images/quartiere1.jpg" alt="Quartiere 1">
+                    <img src="assets/images/quartiere1.jpg" alt="Quartiere Monte Rosello">
                     <h3>Monte Rosello</h3>
                     <p>Monte Rosello è un quartiere ben conosciuto per i suoi servizi e la vivace comunità.</p>
                     <a href="monte.html">Scopri di più</a>
@@ -129,5 +151,3 @@
 
 </body>
 </html>
-
-
